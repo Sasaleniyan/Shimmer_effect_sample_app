@@ -13,6 +13,16 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   bool _isLoading = true;
 
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 5), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+  }
+
   void _toggleLoading() {
     setState(() {
       _isLoading = !_isLoading;
@@ -35,12 +45,6 @@ class _HomeState extends State<Home> {
               const SizedBox(height: 16),
               _buildTopRowList(),
               const SizedBox(height: 16),
-              const Align(
-                alignment: Alignment.center,
-                child: Text(
-                  'Press the Floating Button to preview',
-                ),
-              ),
               _buildListItem(),
               _buildListItem(),
               _buildListItem(),
